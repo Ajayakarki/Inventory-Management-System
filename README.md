@@ -25,15 +25,15 @@
 
 
 
-<h1>Features of Staff</h1>
+<h1>Features of Admin</h1>
 
 <br>* Admin must be logged in into the system.</br>
 <br>* Admin have own profile and can update the profile</br>
 <br>* Admin can view the details of all the staff registered in the system.</br>
 <br>* Admin can add, update and delete the products available in the Inventory.</br>
-<br>* Admin can search the available products according to category</br>
+<br>* Admin can search the available products according to category.</br>
 <br>* Admin can keep track of product out, product in and can make reports of product sales.</br>
-<br>* Admin can add the quantity of product if certain product quantity is about to finish.</br>
+<br>* Admin can add the quantity of product if a particular product quantity is about to finish.</br>
 <br>* Admin can view the sales made by the staff.</br>
 
 
