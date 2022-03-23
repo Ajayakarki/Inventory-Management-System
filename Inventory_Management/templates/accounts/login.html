@@ -1,0 +1,41 @@
+{% extends 'partial/base.html' %}
+
+{% block title %} Login Page  {% endblock %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+    <div class="container">
+        <div class="row my-5">
+            <div class="col-md-5 offset-md-3">
+                <div class="border p-3 bg-white">
+                    {% if messages %}
+                    {% for message in messages %}
+                    <div class="alert alert-success">
+                        {{message}}
+                    </div>
+                    {% endfor %}
+                    {% endif %}
+                    
+                    <h4>Login Here</h4>
+                    <hr>
+                
+                    <form method="POST">
+                        {% csrf_token %}
+                        {{ form|crispy }}
+                        <br>
+                    <input class="btn btn-primary" type="submit" value="Login">
+                    <small class="text-muted">
+                        Don't Have An Account? <a class="ml-2" href="{% url 'register' %}">Create here</a>
+                    </small>
+                    </form>
+
+                
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+ {% endblock %}

@@ -1,0 +1,43 @@
+{% extends 'partial/base.html' %}
+
+{% block title %} Customer Page  {% endblock %}
+
+{% block content %}
+{% include 'partial/cards.html' %}
+
+<div class="container">
+    <div class="row my-4">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+            <table class="table bg-light">
+                <thead class="bg-primary">
+                    <tr class="text-white">
+                        <th scope="col"></th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Phone</th>
+                        <th scope="col">Address</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for worker in workers %}
+                    <tr>
+                        <th scope="row"><a class="btn btn-primary btn-sm" href="{% url 'staff_detail' worker.id %}">Details</a></th>
+                        <td>{{ worker.username }}</td>
+                        <td>{{ worker.email }}</td>
+                        <td>{{ worker.profile.phone }}</td>
+                        <td>{{ worker.profile.address }}</td>
+                        
+                    </tr>
+                    
+                   {% endfor %}
+                   
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,70 @@
+<div class="container">
+    <div class="row mt-4">
+        <!-- <div class="col-md-2">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    Information
+                </div>
+                <div class="card-body">
+                    <marquee>
+                        <h3 class="my-2">Hello Admin</h3>
+                    </marquee>
+                </div>
+            </div> -->
+        </div>
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    Statistics  
+                </div>
+                <div class="card-body">
+                   <div class="row">
+                       <div class="col-md-3">
+                           <a class="text-decoration-none text-dark" href="{% url 'staff' %}">
+                                <div class="card my-card shadow text-center p-3 m-2">
+                                    <h4>Staff <i class="fa-solid fa-users"></i></h4>
+                                    
+                                    <h3>{{ workers_count }}</h3>
+                                </div>
+                           </a>
+                       </div>
+                       <div class="col-md-3">
+                        <a class="text-decoration-none text-dark" href="{% url 'products' %}">
+                             <div class="card my-card shadow text-center p-3 m-2">
+                                 <h4>Products <i class="fa-solid fa-boxes-stacked"></i></h4>
+                                 
+                                 
+                                 <h3>{{ products_count }}</h3>
+                             </div>
+                        </a>
+                    </div>
+                    <div class="col-md-3">
+                        <a class="text-decoration-none text-dark" href="{% url 'orders' %}">
+                             <div class="card my-card shadow text-center p-3 m-2">
+                                 <h4>Details <i class="fa-solid fa-clipboard-list"></i></h4>
+                                 <h3>{{ orders_count }}</h3>
+                             </div>
+                        </a>
+                    </div>
+                    <div class="col-md-3">
+                        <a class="text-decoration-none text-dark" href="{% url 'sales' %}">
+                             <div class="card my-card shadow text-center p-3 m-2">
+                                 <h4>Sales <i class="fa-solid fa-circle-dollar-to-slot"></i></h4>
+                                 
+                                 <h3>{{ product_sales_count }}</h3>
+                             </div>
+                        </a>
+                    </div>
+                    
+                      
+                   </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+        

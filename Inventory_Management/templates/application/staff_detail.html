@@ -1,0 +1,54 @@
+{% extends 'partial/base.html' %}
+
+{% block title %} Staff Page  {% endblock %}
+
+
+{% block content %}
+<div class="container my-5">
+    <div class="col-md-8 offset-md-3">
+        <div class="card">
+            <div class="card-header bg-primary text-white">
+                Customer Detail Page
+            </div>
+            <div class="row p-3">
+                <div class="col-md-8">
+                    <table class="table table-borderless">
+                        <thead>
+                            <span class="h4">Porfile Information</span> &nbsp;
+                            <!-- <a class="btn btn-primary btn-sm ml-2 mb-2" href="{% url 'profile-update' %}">Update</a> -->
+                        
+                        </thead>
+                        <br><br>
+                        <tbody>
+                            <tr>
+                                <th scope="row">Name</th>
+                                <td>{{ worker.username }}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Email</th>
+                                <td>{{worker.email}}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Phone</th>
+                                <td>{{worker.profile.phone}}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Address</th>
+                                <td>{{worker.profile.address}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-md-4">
+                    <img class="img-thumbnail " style="height: 230px; width: 255px;" 
+                    src="{{worker.profile.image.url}}" alt="profile-image">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+
+

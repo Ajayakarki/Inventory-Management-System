@@ -1,0 +1,80 @@
+{% load crispy_forms_tags %}
+
+    <div class="container">
+        <div class="row my-3">
+            <div class="col-md-3 offset-md-5 ">
+                <div class="border bg-white p-3">
+                    <h5 class="text-center"><a href="{% url 'products-staff' %}">See Product Details</a></h5>
+                    
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+
+<div class="container">
+    <div class="row my-4">
+        <div class="col-md-4">
+            <div class="border bg-white p-3">
+                <h4>Choose Products</h4>
+                <hr>
+                <form method="POST" id="form">
+                    {% csrf_token %}
+                    {{ staff_order|crispy }}   
+                                  
+
+                    <input class="btn btn-primary btn-block" type="submit" value="Submit">
+                    
+                    
+                </form>
+                <br>
+            </div>
+        </div>
+
+ 
+        <div class="col-md-8">
+            <h4>Sales by {{ user.username }}</h4>
+            <table class="table bg-white">
+                <thead class="bg-primary">
+                    <tr class="text-white">
+                        
+                        <th scope="col">Name</th>
+                        <th scope="col">Category</th>
+                        <th scope="col">Quantity</th>
+                        <th scope="col">Per unit</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Sales Date</th>
+                        <!-- <th scope="col">Activity</th> -->
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for order in orders %}
+                    {% if order.customer == user %}
+                    <tr>
+                        
+                        <td>{{ order.product.name }}</td>
+                        <td>{{ order.product.category }}</td>
+                        <td>{{ order.order_quantity }}</td>
+                        <td>{{ order.product.per_quantity }}</td>
+                        <td>{{ order.order_price }}</td>
+                        <td>{{ order.date }}</td>
+                        <!-- <td>
+                            <a class="btn btn-warning btn-sm" href="">Edit</a>
+                            <a class="btn btn-danger btn-sm" href="">Delete</a>
+                        </td> -->
+                    </tr>
+                    {% endif %}
+                    {% endfor %}                   
+                    
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
+
+
+
+

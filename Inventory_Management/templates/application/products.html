@@ -1,0 +1,148 @@
+{% extends 'partial/base.html' %}
+
+{% block title %} Products page {% endblock %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+{% include 'partial/cards.html' %}
+
+
+<div class="container">
+    <div class="row my-3">
+        <div class="col-md-3 offset-md-3 ">
+            <div class="border bg-white p-3">
+                <h5 class="text-center"><a href="{% url 'products-list' %}">See all Products</a></h5>
+                
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="border bg-white p-3">
+                <h5 class="text-center"><a href="{% url 'products-in-out' %}">Products In Out Details</a></h5>
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="container">
+    <div class="row my-4">
+        <div class="col-md-4">
+            {% if messages %}
+    {% for message in messages %}
+        <div class="alert alert-success">
+            {{message}}
+        </div>  
+        {% endfor %}
+        {% endif %}  
+            <div class="border bg-white p-3">
+                <h4>Add Products</h4>
+                <hr>
+                <form method="POST">
+                    {% csrf_token %}
+                    {{form|crispy}}
+                     <br>
+                    <input class="btn btn-primary btn-block" type="submit" value="Add Product">
+
+                </form>
+            </div>
+        </div>
+
+        
+        <div class="col-md-8">
+            <table class="table bg-white">
+                <thead class="bg-primary">
+                    <tr class="text-white">
+                        <th scope="col">Name</th>
+                        <th scope="col">Category</th>
+                        <th scope="col">Quantity</th>
+                        <th scope="col">Per unit</th>
+                        <!-- <th scope="col">R-Level</th> -->
+                        <th scope="col">Price</th>
+                        <th scope="col">Activity</th>   
+                        
+                        <!-- <th scope="col">P-in</th>
+                        <th scope="col">P-out</th> -->
+                    </tr>
+                </thead>
+                
+                <tbody>
+                    {% for p in page_obj%}
+                    {% if p.quantity <= p.reorder_level %}
+
+                    <tr>
+                        <td class="text-center">{{p.name}}</td>
+                        <td class="text-center">{{p.category}}</td>
+                        <td class="bg-warning text-center">{{p.quantity}}</td>
+                        <td class="text-center">{{p.per_quantity}}</td>
+                        <!-- <td class="text-center">{{p.reorder_level}}</td> -->
+                        <td class="text-center">{{p.total_price}}</td>
+                        
+                        
+                        <td>
+                            <a class="btn btn-primary btn-sm" href="{% url 'product_update' p.id %}">Edit</a>
+                            <a class="btn btn-danger btn-sm" href="{% url 'product_delete' p.id %}">Delete</a>
+                            <a class="btn btn-success btn-sm" href="{% url 'product_quantity_update' p.id %}">+</a>
+
+                        </td>
+                        <!-- <td class="text-center">{{p.product_in}}</td>
+                        <td class="text-center">{{p.product_out}}</td> -->
+                        
+                    </tr>
+                    {% else %}
+                    
+                    <tr>
+                        <td class="text-center">{{p.name}}</td>
+                        <td class="text-center">{{p.category}}</td>
+                        <td class="text-center">{{p.quantity}}</td>
+                        <td class="text-center">{{p.per_quantity}}</td>
+                        <!-- <td class="text-center">{{p.reorder_level}}</td> -->
+                        <td class="text-center">{{p.total_price}}</td>
+                        
+                        
+                        <td>
+                            <a class="btn btn-primary btn-sm" href="{% url 'product_update' p.id %}">Edit</a>
+                            <a class="btn btn-danger btn-sm" href="{% url 'product_delete' p.id %}">Delete</a>
+                            <a class="btn btn-success btn-sm" href="{% url 'product_quantity_update' p.id %}">+</a>
+
+                            
+                        </td>
+                        <!-- <td class="text-center">{{p.product_in}}</td>
+                        <td class="text-center">{{p.product_out}}</td> -->
+                        
+                    </tr>
+                  
+                </tbody>
+                
+                {% endif %}
+                {% endfor %}
+
+                <div class="pagination my-3">
+                    <span class="step-links">
+                        {% if page_obj.has_previous %}
+                            <a href="?page=1">&laquo; first</a>
+                            <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+                        {% endif %}
+                
+                        <span class="current">
+                            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                        </span>
+                
+                        {% if page_obj.has_next %}
+                            <a href="?page={{ page_obj.next_page_number }}">next</a>
+                            <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+                        {% endif %}
+                    </span>
+                </div>
+                
+                
+            </table>
+        </div>
+        
+    </div>
+
+</div>
+
+
+{% endblock %}

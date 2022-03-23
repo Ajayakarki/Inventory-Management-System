@@ -1,0 +1,74 @@
+{% extends 'partial/base.html' %}
+
+{% block title %} Products page {% endblock %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+{% include 'partial/cards.html' %}
+
+
+<div class="container">
+    <div class="row my-3">
+        <div class="col-md-3 offset-md-3 ">
+            <div class="border bg-white p-3">
+                <h5 class="text-center"><a href="{% url 'products-list' %}">See all Products</a></h5>
+                
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="border bg-white p-3">
+                <h5 class="text-center"><a href="{% url 'products-in-out' %}">Products In Out Details</a></h5>
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+        
+        <div class="col-md-6 offset-md-3">
+            <table class="table bg-white">
+                <thead class="bg-primary">
+                    <tr class="text-white">
+                        <th class="text-center" scope="col">Name</th>
+                        <th class="text-center" scope="col">Category</th>
+                        
+                        
+                        
+                        <th class="text-center" scope="col">P-in</th>
+                        <th class="text-center" scope="col">P-out</th>
+                    </tr>
+                </thead>
+                
+                <tbody>
+                    {% for p in product%}
+                    
+
+                    <tr>
+                        <td class="text-center">{{p.name}}</td>
+                        <td class="text-center">{{p.category}}</td>
+                              
+                        <td class="text-center">{{p.product_in}}</td>
+                        <td class="text-center">{{p.product_out}}</td>
+                        
+                    </tr>
+                   
+                  
+                </tbody>
+                
+               {% endfor %}
+
+                              
+                
+            </table>
+        </div>
+        
+    </div>
+
+</div>
+
+
+{% endblock %}

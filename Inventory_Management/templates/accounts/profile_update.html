@@ -1,0 +1,29 @@
+{% extends 'partial/base.html' %}
+
+{% block title %} Profile Update Page  {% endblock %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row my-5">
+        <div class="col-md-6 offset-md-3">
+            <div class="border bg-white p-3 md-6">
+                <h4>Update</h4>
+                <hr>
+                <form method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{user_form|crispy}}
+                    {{user_profile|crispy}}
+                    <br>
+                    <input class="btn btn-primary" type="submit" value="Update">
+                </form>
+                
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

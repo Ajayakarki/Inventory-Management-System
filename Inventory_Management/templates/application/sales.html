@@ -1,0 +1,81 @@
+{% extends 'partial/base.html' %}
+
+{% block title %} Sales page {% endblock %}
+
+{% block content %}
+{% include 'partial/cards.html' %}
+
+
+
+<center class="mt-3">
+    <form method="POST">
+        {% csrf_token %}
+
+    <input class="btn btn-primary" type="submit" name="csv" value="Export to csv">
+    </form>
+
+
+</center>
+
+
+
+
+<div class="container">
+    <div class="row my-4">
+        <div class="col-md-2">
+
+        </div>
+        <div class="col-md-8">
+            <table class="table bg-white">
+                <thead class="bg-primary">
+                    
+                    <tr class="text-white">
+                        <th scope="col">Product</th>
+                        <th scope="col">Category</th>
+                        <th scope="col">Quantity</th>
+                        <th scope="col">Per unit</th>
+                        <th scope="col">Total</th>
+                                                                      
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for sales1 in product_sales %}
+                    <tr>
+                        <td>{{ sales1.name }}</td>
+                        <td>{{ sales1.category }}</td>
+                        <td>{{ sales1.product_out }}</td>
+                        <td>{{ sales1.per_quantity }}</td>
+                        <td>{{ sales1.item_sales }}</td>
+                        
+                    </tr>
+                    {% endfor %}             
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
+
+
+
+
+<div class="container">
+    <div class="row-my-5">
+               
+        <div class="col-md-12 d-flex justify-content-center">
+            
+                     <div class="card shadow text-center p-3 m-2">
+                    
+                         <h4>Total Sales of Inventory <i class="fa-solid fa-circle-dollar-to-slot"></i></h4>
+                         
+                         <h3>{{ total.thedata }}</h3>
+                         <!-- <h3>500</h3> -->
+
+                     </div>
+        </div>
+        
+        </div>
+    </div>
+</div>
+
+{% endblock %}

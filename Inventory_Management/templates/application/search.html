@@ -1,0 +1,72 @@
+{% extends 'partial/base.html' %}
+
+{% block title %} Products page {% endblock %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+
+
+<div class="container">
+    <div class="row">
+
+   
+    <div class="col-md-4 offset-md-6 mt-3">
+    <span class="step-links float-right">
+        <form class="d-flex" action="{% url 'search' %}">
+            <input class="form-control ml-3" type="search" placeholder="Search" aria-label="Search" name="search" required>
+            <button class="btn btn-outline-primary" type="submit">Search</button>
+          </form>
+
+        </span>
+    </div>
+        
+        
+
+
+        
+        <div class="col-md-7 offset-md-3">
+            <table class="table bg-white">
+                <thead class="bg-primary">
+                    <tr class="text-white">
+                        <th class="text-center" scope="col">Name</th>
+                        <th class="text-center" scope="col">Category</th>
+                        <th class="text-center" scope="col">Quantity</th>
+                        <th class="text-center" scope="col">Per unit</th>                      
+                        
+                        
+                        
+                    </tr>
+                </thead>
+                
+                <tbody>
+                    {% for p in search%}
+                    
+
+                    <tr>
+                        <td class="text-center">{{p.name}}</td>
+                        <td class="text-center">{{p.category}}</td>
+                        <td class="text-center">{{p.quantity}}</td>
+                        <td class="text-center">{{p.per_quantity}}</td>
+                              
+                        
+                        
+                    </tr>
+                   
+                  
+                </tbody>
+                
+               {% endfor %}
+
+                              
+                
+            </table>
+        </div>
+        
+    </div>
+
+</div>
+
+
+{% endblock %}
