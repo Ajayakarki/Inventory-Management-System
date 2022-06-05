@@ -43,17 +43,10 @@ urlpatterns = [
     # ### Session Authentication buildin Login and Logout of DRF
     # path('auth/', include('rest_framework.urls')),
 
-
+    ## For registration and token
     path('api-token-auth/', rest_views.obtain_auth_token),
     path('api/register/', views.RegisterUserView.as_view()),
     path('api/register/<int:pk>/', views.RegisterUserView.as_view()),
     path('api/register/<int:pk>/profile/', views.RegisterUserView.as_view()), 
-
-
-
-
-
-
-
 
 ]
